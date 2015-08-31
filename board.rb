@@ -29,6 +29,11 @@ class Board
     grid[row][col] = value
   end
 
+  def in_bounds?(pos)
+    row,col = pos
+    (0..7).include?(row) && (0..7).include?(col)
+  end
+
   def rows
     grid
   end

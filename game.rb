@@ -1,19 +1,21 @@
 require_relative 'board'
 require_relative 'player'
-require_relative 'display'
+
 
 class Game
 
 
   def initialize
-    @player = Player.new("Test")
     @board = Board.new
-    @display = Display.new(@board)
+    @player = Player.new("Test", @board)
+
+    # @display = Display.new(@board)
   end
 
 
   def play
-    render_board
+
+    @player.move
     # until over?
     #   move
     #   switch_players
@@ -23,10 +25,6 @@ class Game
 
   private
   attr_reader :display
-
-  def render_board
-    display.render
-  end
 
   def over?
     true

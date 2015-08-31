@@ -9,14 +9,14 @@ class Piece
   end
 
   def to_s
-    "P"
+    " P "
   end
 
 end
 
 class EmptySpace
   def to_s
-    " "
+    "   "
   end
 
   def empty?
