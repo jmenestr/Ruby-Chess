@@ -3,19 +3,28 @@ require_relative 'errors'
 
 class Board
   def initialize
-    @grid = Array.new(8) { Array.new(8) }
-    setup
+    @grid = Array.new(8) { Array.new(8) { EmptySpace.new } }
+    setup_board
   end
 
-  def setup
-    grid[0..1].each do |row|
-      row.map! { Piece.new("p") }
+  def setup_board
+    setup_black
+    setup_white
+  end
+
+  def setup_black
+    grid[0..1].each_with_index do |row, row_index|
+      row.map!.with_index do |_, col_index|
+        Piece.new([row_index, col_index], self)
+      end
     end
-    grid[2..5].each do |row|
-      row.map! { EmptySpace.new }
-    end
-    grid[6..7].each do |row|
-      row.map! { Piece.new("p") }
+  end
+
+  def setup_white
+    grid[6..7].each_with_index do |row, row_index|
+      row.map!.with_index do |_, col_index|
+        Piece.new([row_index, col_index], self)
+      end
     end
   end
 

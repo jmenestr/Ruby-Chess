@@ -1,7 +1,8 @@
 class Piece
 
-  def initialize(type)
-    @type = type
+  def initialize(board, position)
+    @board = board
+    @position = position
   end
 
   def empty?
@@ -12,6 +13,20 @@ class Piece
     " P "
   end
 
+  def move
+
+  end
+end
+
+class SlidingPiece < Piece
+
+end
+
+class SteppingPiece < Piece
+
+end
+
+class Pawn < Piece
 end
 
 class EmptySpace
