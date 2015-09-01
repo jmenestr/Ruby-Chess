@@ -32,7 +32,7 @@ class Display
     else
       bg = :light_blue
     end
-    { background: bg, color: :white }
+    { background: bg }
   end
 
   def render

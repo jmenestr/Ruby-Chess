@@ -1,4 +1,5 @@
-require_relative 'pieces'
+require_relative 'all_pieces'
+
 require_relative 'errors'
 
 class Board
@@ -13,17 +14,41 @@ class Board
   end
 
   def setup_black
-    grid[0..1].each_with_index do |row, row_index|
-      row.map!.with_index do |_, col_index|
-        Piece.new([row_index, col_index], self, :black)
+    grid[6].map!.each_with_index do |_, col_index|
+      Pawn.new([1, col_index], self, :black)
+    end
+    grid[7].map!.with_index do |_, col_index|
+      if col_index == 0 || col_index == 7
+        Rook.new([0, col_index], self, :black)
+      elsif col_index == 1 || col_index == 6
+        Knight.new([0, col_index], self, :black)
+      elsif col_index == 2 || col_index == 5
+        Bishop.new([0, col_index], self, :black)
+      elsif col_index == 3
+        King.new([0, col_index], self, :black)
+      elsif col_index == 4
+        Queen.new([0, col_index], self, :black)
       end
     end
   end
 
   def setup_white
-    grid[6..7].each_with_index do |row, row_index|
-      row.map!.with_index do |_, col_index|
-        Piece.new([row_index, col_index], self, :white)
+
+    grid[1].map!.each_with_index do |_, col_index|
+      Pawn.new([1, col_index], self, :white)
+    end
+
+    grid[0].map!.with_index do |_, col_index|
+      if col_index == 0 || col_index == 7
+        Rook.new([0, col_index], self, :white)
+      elsif col_index == 1 || col_index == 6
+        Knight.new([0, col_index], self, :white)
+      elsif col_index == 2 || col_index == 5
+        Bishop.new([0, col_index], self, :white)
+      elsif col_index == 3
+        King.new([0, col_index], self, :white)
+      elsif col_index == 4
+        Queen.new([0, col_index], self, :white)
       end
     end
   end

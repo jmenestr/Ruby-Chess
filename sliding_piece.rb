@@ -3,7 +3,7 @@ require_relative 'pieces'
 class SlidingPiece < Piece
   def move
     possible_moves = []
-    step_dir.each do |direction|
+    slide_dir.each do |direction|
       next_space = add_positions(position, direction)
 
       while true

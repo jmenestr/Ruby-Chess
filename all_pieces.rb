@@ -1,6 +1,6 @@
 require_relative 'stepping_piece'
 require_relative 'sliding_piece'
-
+require 'colorize'
 
 class Queen < SlidingPiece
   STEP_DIR = [
@@ -14,8 +14,12 @@ class Queen < SlidingPiece
     [-1,0]
   ].freeze
 
-  def step_dir
+  def slide_dir
     STEP_DIR
+  end
+
+  def to_s
+    color == :black ? " \u{265B} ".colorize(:black) : " \u{2655} "
   end
 end
 
@@ -34,9 +38,13 @@ class King < SteppingPiece
   def step_dir
     STEP_DIR
   end
+
+  def to_s
+    color == :black ? " \u{265A} ".colorize(:black) : " \u{2654} "
+  end
 end
 
-class Rook < SteppingPiece
+class Rook < SlidingPiece
   STEP_DIR = [
     [1,0],
     [0,1],
@@ -44,8 +52,12 @@ class Rook < SteppingPiece
     [-1,0]
   ]
 
-  def step_dir
+  def slide_dir
     STEP_DIR
+  end
+
+  def to_s
+    color == :black ? " \u{265C} ".colorize(:black) : " \u{2656} "
   end
 end
 
@@ -57,9 +69,14 @@ class Bishop < SlidingPiece
     [-1,-1]
   ]
 
-  def step_dir
+  def slide_dir
     STEP_DIR
   end
+
+  def to_s
+    color == :black ? " \u{265D} ".colorize(:black) : " \u{2657} "
+  end
+
 end
 
 class Knight < SteppingPiece
@@ -77,7 +94,17 @@ class Knight < SteppingPiece
   def step_dir
     STEP_DIR
   end
+
+  def to_s
+    color == :black ? " \u{265E} ".colorize(:black) : " \u{2658} "
+  end
+
 end
 
-class Pawn
+class Pawn < Piece
+
+  def to_s
+    color == :black ? " \u{265F} ".colorize(:black) : " \u{2659} "
+  end
+
 end
