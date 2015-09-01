@@ -1,8 +1,9 @@
 require_relative 'display'
 
 class Player
+  attr_reader :color
 
-  def initialize(name,color = "white", board)
+  def initialize(name,color = :white, board)
     @name = name
     @color = color
     @display = Display.new(board)
@@ -12,8 +13,8 @@ class Player
     result = nil
     until result
       display.render
+      puts "It's #{color}'s turn to move."
       result = display.get_input
-    
     end
     result
   end

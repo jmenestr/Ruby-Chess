@@ -3,3 +3,6 @@ end
 
 class EmptySpaceError < StandardError
 end
+
+class WrongColorError < StandardError
+end

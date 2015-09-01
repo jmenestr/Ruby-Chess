@@ -1,7 +1,7 @@
 require_relative 'pieces'
 
 class SlidingPiece < Piece
-  def move
+  def moves
     possible_moves = []
     slide_dir.each do |direction|
       next_space = add_positions(position, direction)
@@ -11,10 +11,10 @@ class SlidingPiece < Piece
 
         if board[next_space].empty?
           possible_moves << next_space
-        elsif own_color?(board[next_space])
+        elsif board[next_space].attackable?(self)
+          possible_moves << next_space
           break
         else
-          possible_moves << next_space
           break
         end
 
