@@ -15,7 +15,7 @@ class Board
   def setup_black
     grid[0..1].each_with_index do |row, row_index|
       row.map!.with_index do |_, col_index|
-        Piece.new([row_index, col_index], self)
+        Piece.new([row_index, col_index], self, :black)
       end
     end
   end
@@ -23,7 +23,7 @@ class Board
   def setup_white
     grid[6..7].each_with_index do |row, row_index|
       row.map!.with_index do |_, col_index|
-        Piece.new([row_index, col_index], self)
+        Piece.new([row_index, col_index], self, :white)
       end
     end
   end
@@ -33,7 +33,7 @@ class Board
     grid[row][col]
   end
 
-  def [](pos,value)
+  def []=(pos,value)
     row, col = pos
     grid[row][col] = value
   end

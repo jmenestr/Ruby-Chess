@@ -1,9 +1,12 @@
 class Piece
 
-  def initialize(board, position)
+  def initialize(board, position, color)
     @board = board
     @position = position
+    @color = color
   end
+
+  attr_reader :position, :color, :board
 
   def empty?
     false
@@ -14,20 +17,16 @@ class Piece
   end
 
   def move
-
   end
-end
 
-class SlidingPiece < Piece
-
-end
-
-class SteppingPiece < Piece
+  private
+  def own_color?(other_piece)
+    color == other_piece.color
+  end
 
 end
 
-class Pawn < Piece
-end
+
 
 class EmptySpace
   def to_s
