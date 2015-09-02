@@ -24,11 +24,4 @@ class SlidingPiece < Piece
     possible_moves
   end
 
-  private
-
-  def add_positions(current_position, direction)
-    current_row, current_col = current_position
-    direction_row, direction_col = direction
-    [current_row + direction_row, current_col + direction_col]
-  end
 end

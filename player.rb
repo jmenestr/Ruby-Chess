@@ -21,5 +21,4 @@ class Player
 
   private
   attr_reader :display
-
 end

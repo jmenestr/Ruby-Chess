@@ -124,9 +124,8 @@ class Pawn < Piece
 
   def passive_moves(start_position)
     passive = []
-    # byebug
+
     step_dir.each do |direction|
-      # byebug
       next_space = add_positions(start_position, direction)
       next unless board.in_bounds?(next_space)
 
@@ -139,17 +138,19 @@ class Pawn < Piece
         passive << next_space
       end
     end
-    passive.select {|position| board[position].empty? }
+
+    passive.select { |position| board[position].empty? }
   end
 
   def attacking_moves(start_position)
     attacks = []
-    # byebug
+
     jump_dir.each do |direction|
       next_space = add_positions(start_position, direction)
       next unless board.in_bounds?(next_space)
       attacks << next_space if board[next_space].attackable?(self)
     end
+
     attacks
   end
 
@@ -177,9 +178,4 @@ class Pawn < Piece
     end
   end
 
-  def add_positions(current_position, direction)
-    current_row, current_col = current_position
-    direction_row, direction_col = direction
-    [current_row + direction_row, current_col + direction_col]
-  end
 end

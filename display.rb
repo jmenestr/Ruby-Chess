@@ -5,10 +5,13 @@ require_relative 'board'
 
 class Display
   include Cursorable
+  attr_reader :board
+  attr_accessor :selected_piece
 
   def initialize(board)
     @board = board
     @cursor_pos = [0,5]
+    @selected_piece = nil
   end
 
   def build_grid
@@ -27,20 +30,24 @@ class Display
   def colors_for(i, j)
     if [i, j] == @cursor_pos
       bg = :light_red
+    elsif get_valid_moves.include?([i,j])
+      bg = :green
     elsif (i + j).odd?
-      bg = :yellow
-    else
       bg = :light_blue
+    else
+      bg = :yellow
     end
     { background: bg }
   end
 
+  def get_valid_moves
+    board[@cursor_pos].valid_moves
+  end
+
   def render
     system("clear")
-    puts "Fill the grid!"
-    puts "Arrow keys, WASD, or vim to move, space or enter to confirm."
+    puts "Use the arrows to make a move!"
     build_grid.each { |row| puts row.join }
     nil
   end
-
 end

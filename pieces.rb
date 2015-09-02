@@ -40,6 +40,13 @@ class Piece
     self.class.new(new_position, new_board, new_color)
   end
 
+  private
+  def add_positions(current_position, direction)
+    current_row, current_col = current_position
+    direction_row, direction_col = direction
+    [current_row + direction_row, current_col + direction_col]
+  end
+
 end
 
 class EmptySpace
@@ -61,6 +68,10 @@ class EmptySpace
 
   def color
     nil
+  end
+
+  def valid_moves
+    []
   end
 
   def dup(new_board)
