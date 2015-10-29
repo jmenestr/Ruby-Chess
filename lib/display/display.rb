@@ -1,7 +1,6 @@
 require 'colorize'
 require_relative 'cursorable'
-require_relative 'board'
-
+require_relative '../board/board'
 
 class Display
   include Cursorable

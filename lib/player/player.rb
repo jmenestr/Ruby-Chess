@@ -1,4 +1,4 @@
-require_relative 'display'
+require_relative '../display/display'
 
 class Player
   attr_reader :color

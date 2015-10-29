@@ -1,8 +1,7 @@
-require_relative 'board'
-require_relative 'player'
-require_relative 'display'
+require_relative 'lib/board/board'
+require_relative 'lib/player/player'
+require_relative 'lib/display/display'
 
-require 'byebug'
 class Game
 
   def initialize
@@ -16,26 +15,6 @@ class Game
   def play
 
     until over?
-      begin
-      #   start = @current_player.move
-      #
-      #   piece = get_piece
-      #
-      #   valid_start?(start)
-      #   current_piece = board[start]
-      # rescue EmptySpaceError, WrongColorError
-      #   puts "Must select non empty square"
-      #   retry
-      # end
-      #
-      # begin
-      #   possible_moves = current_piece.valid_moves
-      #   end_pos = @current_player.move
-      #   valid_move?(possible_moves, end_pos)
-      # rescue InvalidMoveError
-      #   puts "Select new move"
-      #   retry
-      # end
       begin
         first_move = make_first_move
       rescue InvalidMoveError, WrongColorError, EmptySpaceError
@@ -51,7 +30,6 @@ class Game
 
       rotate_player!
       end
-    end
 
   end
 
@@ -83,12 +61,7 @@ class Game
     end
     result
   end
-  #
-  # result = nil
-  # until result
-  #   puts "It's #{color}'s turn to move."
-  #   result = display.get_input
-  # end
+
 
 
   def over?
